@@ -1,12 +1,13 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { Dispatch, SetStateAction } from "react";
 import { createContext } from "react";
 import LeftPanel from "./LeftPanel";
 import MiddlePanel from "./MiddlePanel";
 import RightPanel from "./RightPanel";
+import { evaluate } from "mathjs";
 
 const AppContext = createContext<
   | {
@@ -21,6 +22,14 @@ const AppContext = createContext<
 function App() {
   const [input, setInput] = useState("");
   const [result, setResult] = useState("");
+
+  useEffect(() => {
+    try {
+      setResult(evaluate(input));
+    } catch {
+      setResult("Syntax error");
+    }
+  }, [input]);
 
   return (
     <AppContext.Provider value={{ input, setInput, result, setResult }}>

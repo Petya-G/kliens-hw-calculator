@@ -1,27 +1,8 @@
 import { useState, useContext } from "react";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import { evaluate } from "mathjs";
 import { AppContext } from "./App";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
-
-function useCalculate({
-  clearInput,
-  errors,
-}: {
-  clearInput?: boolean;
-  errors?: boolean;
-} = {}) {
-  const { input, setInput, setResult } = useContext(AppContext)!;
-  return () => {
-    try {
-      setResult(evaluate(input));
-    } catch (error) {
-      if (!!errors) setResult("Syntax error");
-    }
-    if (!!clearInput) setInput("");
-  };
-}
 
 function CalcButton({
   value,
@@ -43,13 +24,11 @@ function CalcButton({
 
 function NumberButton({ value }: { value: string }) {
   const { setInput } = useContext(AppContext)!;
-  const calculate = useCalculate();
   return (
     <CalcButton
       value={value}
       onClick={() => {
         setInput((input) => input + value);
-        calculate();
       }}
     />
   );
@@ -65,17 +44,15 @@ function OperatorButton({
   toolTip?: string;
 }) {
   const { setInput } = useContext(AppContext)!;
-  const calculate = useCalculate();
   return (
     <CalcButton
       value={text}
       toolTip={toolTip}
       onClick={() => {
         setInput((input) => input + value);
-        calculate();
       }}
     />
   );
 }
 
-export { useCalculate, CalcButton, OperatorButton, NumberButton };
+export { CalcButton, OperatorButton, NumberButton };

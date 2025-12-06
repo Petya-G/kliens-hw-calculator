@@ -1,31 +1,45 @@
 import Col from "react-bootstrap/Col";
-import { CalcButton } from "./Buttons";
+import { CalcButton, OperatorButton } from "./Buttons";
 import CalcRow from "./CalcRow";
+import { AppContext } from "./App";
+import { useContext } from "react";
 
 function RightPanel() {
+  const { input, setInput, result, setResult } = useContext(AppContext)!;
   return (
     <Col>
-      {/* <CalcRow>
-        <CalcButton value="C" />
-        <CalcButton value="<-" />
+      <CalcRow>
+        <CalcButton
+          value="C"
+          onClick={() => {
+            setInput("");
+            setResult("");
+          }}
+        />
+        <CalcButton
+          value="<-"
+          onClick={() => {
+            setInput(input.substring(0, input.length - 1));
+          }}
+        />
       </CalcRow>
       <CalcRow>
-        <CalcButton value="AC" />
-        <CalcButton value="MS" />
+        <CalcButton value="AC" onClick={() => {}} />
+        <CalcButton value="MS" onClick={() => {}} />
       </CalcRow>
       <CalcRow>
-        <CalcButton value="(" />
-        <CalcButton value="M" />
+        <OperatorButton value="(" text="(" />
+        <CalcButton value="M" onClick={() => {}} />
       </CalcRow>
       <CalcRow>
-        <CalcButton value=")" />
-        <CalcButton value="MR" />
+        <OperatorButton value=")" text=")" />
+        <CalcButton value="MR" onClick={() => {}} />
       </CalcRow>
       <CalcRow>
-        <CalcButton value="+/-" />
-        <CalcButton value="M+" />
-      </CalcRow> */}
+        <CalcButton value="+/-" onClick={() => {}} />
+        <CalcButton value="M+" onClick={() => {}} />
+      </CalcRow>
     </Col>
   );
 }
-export default RightPanel
+export default RightPanel;
