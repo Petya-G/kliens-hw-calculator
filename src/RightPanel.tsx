@@ -24,7 +24,10 @@ function RightPanel() {
         />
       </CalcRow>
       <CalcRow>
-        <CalcButton value="AC" onClick={() => {}} />
+        <CalcButton value="AC" onClick={() => {
+            setInput("");
+            setResult("");
+        }} />
         <CalcButton value="MS" onClick={() => {}} />
       </CalcRow>
       <CalcRow>
