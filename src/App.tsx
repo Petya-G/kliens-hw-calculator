@@ -8,6 +8,8 @@ import LeftPanel from "./LeftPanel";
 import MiddlePanel from "./MiddlePanel";
 import RightPanel from "./RightPanel";
 import { evaluate } from "mathjs";
+import HistoryPanel from "./HistoryPanel";
+import { Col } from "react-bootstrap";
 
 const AppContext = createContext<
   | {
@@ -60,25 +62,34 @@ function App() {
 
   return (
     <AppContext.Provider value={{ input, setInput, result, setResult }}>
-      <Container>
-        <Container>
+      <Row>
+        <Col>
           <Row>
-            <Form.Control
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-            />
+            <Col>
+              <Row>
+                <Col>
+                  <Form.Control
+                    type="text"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                  />
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <h1>{result}</h1>
+                </Col>
+              </Row>
+            </Col>
           </Row>
           <Row>
-            <h1>{result}</h1>
+            <LeftPanel />
+            <MiddlePanel />
+            <RightPanel />
           </Row>
-        </Container>
-        <Row>
-          <LeftPanel />
-          <MiddlePanel />
-          <RightPanel />
-        </Row>
-      </Container>
+        </Col>
+        <HistoryPanel />
+      </Row>
     </AppContext.Provider>
   );
 }
