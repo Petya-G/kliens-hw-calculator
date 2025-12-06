@@ -1,39 +1,39 @@
 import Col from "react-bootstrap/Col";
-import { CalcButton, EqualsButton } from "./Buttons";
+import { CalcButton, NumberButton } from "./Buttons";
 import CalcRow from "./CalcRow";
 
 function MiddlePanel() {
   return (
     <Col>
       <CalcRow>
-        <CalcButton value="%" />
-        <CalcButton value="/" />
-        <CalcButton value="*" />
-        <CalcButton value="-" />
+        <NumberButton value="%" />
+        <NumberButton value="/" />
+        <NumberButton value="*" />
+        <NumberButton value="-" />
       </CalcRow>
       <CalcRow>
-        <CalcButton value="7" />
-        <CalcButton value="8" />
-        <CalcButton value="9" />
-        <CalcButton value="+" />
+        <NumberButton value="7" />
+        <NumberButton value="8" />
+        <NumberButton value="9" />
+        <NumberButton value="+" />
       </CalcRow>
       <CalcRow>
-        <CalcButton value="4" />
-        <CalcButton value="5" />
-        <CalcButton value="6" />
-        <CalcButton value="3" />
+        <NumberButton value="4" />
+        <NumberButton value="5" />
+        <NumberButton value="6" />
+        <NumberButton value="3" />
       </CalcRow>
       <CalcRow>
-        <CalcButton value="1" />
-        <CalcButton value="2" />
-        <CalcButton value="3" />
-        <EqualsButton />
+        <NumberButton value="1" />
+        <NumberButton value="2" />
+        <NumberButton value="3" />
+        <CalcButton value="=" onClick={() => {}} />
       </CalcRow>
       <CalcRow>
-        <CalcButton value="0" />
-        <CalcButton value="0" />
-        <CalcButton value="." />
-        <EqualsButton />
+        <NumberButton value="0" />
+        <NumberButton value="0" />
+        <NumberButton value="." />
+        <CalcButton value="=" onClick={() => {}} />
       </CalcRow>
     </Col>
   );

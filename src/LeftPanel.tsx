@@ -1,37 +1,37 @@
 import Col from "react-bootstrap/Col";
-import { CalcButton } from "./Buttons";
+import { OperatorButton } from "./Buttons";
 import CalcRow from "./CalcRow";
 
 function LeftPanel() {
   return (
     <Col>
       <CalcRow>
-        <CalcButton value="Hyp" />
-        <CalcButton value="mod" />
+        {/* <OperatorButton value="Hyp" /> */}
+        <OperatorButton value=" mod " text="mod" />
       </CalcRow>
       <CalcRow>
-        <CalcButton value="sin" />
-        <CalcButton value="1/x" />
+        <OperatorButton value="sin(" text="sin" />
+        <OperatorButton value="⁻¹" text="1/x" />
       </CalcRow>
       <CalcRow>
-        <CalcButton value="cos" />
-        <CalcButton value="x!" />
+        <OperatorButton value="cos(" text="cos" />
+        <OperatorButton value="!" text="x!" />
       </CalcRow>
       <CalcRow>
-        <CalcButton value="tan" />
-        <CalcButton value="x^2" />
+        <OperatorButton value="tan(" text="tan" />
+        <OperatorButton value="²" text="x²" />
       </CalcRow>
       <CalcRow>
-        <CalcButton value="log" />
-        <CalcButton value="sqrt(x)" />
+        <OperatorButton value="log(" text="log" />
+        <OperatorButton value="√(" text="√" />
       </CalcRow>
       <CalcRow>
-        <CalcButton value="ln" />
-        <CalcButton value="x^y" />
+        <OperatorButton value="ln(" text="ln" />
+        <OperatorButton value="^" text=" xʸ" />
       </CalcRow>
       <CalcRow>
-        <CalcButton value="i" />
-        <CalcButton value="x*10^y" />
+        <OperatorButton value="i" text="i" />
+        <OperatorButton value="10^" text="x*10ʸ" />
       </CalcRow>
     </Col>
   );

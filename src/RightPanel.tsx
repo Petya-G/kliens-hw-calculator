@@ -5,7 +5,7 @@ import CalcRow from "./CalcRow";
 function RightPanel() {
   return (
     <Col>
-      <CalcRow>
+      {/* <CalcRow>
         <CalcButton value="C" />
         <CalcButton value="<-" />
       </CalcRow>
@@ -24,7 +24,7 @@ function RightPanel() {
       <CalcRow>
         <CalcButton value="+/-" />
         <CalcButton value="M+" />
-      </CalcRow>
+      </CalcRow> */}
     </Col>
   );
 }
