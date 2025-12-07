@@ -1,4 +1,3 @@
-import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import { useEffect, useState } from "react";
@@ -17,6 +16,8 @@ const AppContext = createContext<
       setInput: Dispatch<SetStateAction<string>>;
       result: string;
       setResult: Dispatch<SetStateAction<string>>;
+      history: { input: string; result: string }[];
+      setHistory: Dispatch<SetStateAction<{ input: string; result: string }[]>>;
     }
   | undefined
 >(undefined);
@@ -24,6 +25,9 @@ const AppContext = createContext<
 function App() {
   const [input, setInput] = useState("");
   const [result, setResult] = useState("");
+  const [history, setHistory] = useState<{ input: string; result: string }[]>(
+    []
+  );
 
   useEffect(() => {
     if (input === "") {
@@ -58,6 +62,9 @@ function App() {
       else if (e.key == "Backspace")
         setInput((prev) => prev.substring(0, prev.length - 1));
       else if (e.key == "Enter") {
+        if (input !== "" || result !== "" || input === result)
+          setHistory((prev) => [...prev, { input: input, result: result }]);
+
         setInput(result);
         setResult("");
       }
@@ -68,7 +75,9 @@ function App() {
   }, [result]);
 
   return (
-    <AppContext.Provider value={{ input, setInput, result, setResult }}>
+    <AppContext.Provider
+      value={{ input, setInput, result, setResult, history, setHistory }}
+    >
       <Row>
         <Col>
           <Row>

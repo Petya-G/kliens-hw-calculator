@@ -5,7 +5,8 @@ import { AppContext } from "./App";
 import { useContext } from "react";
 
 function MiddlePanel() {
-  const { input, setInput, result, setResult } = useContext(AppContext)!;
+  const { input, setInput, result, setResult, setHistory } =
+    useContext(AppContext)!;
   return (
     <Col>
       <CalcRow>
@@ -33,6 +34,9 @@ function MiddlePanel() {
         <CalcButton
           value="="
           onClick={() => {
+            if (input !== "" || result !== "" || input === result)
+              setHistory((prev) => [...prev, { input: input, result: result }]);
+
             setInput(result);
             setResult("");
           }}
