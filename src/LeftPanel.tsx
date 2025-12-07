@@ -23,7 +23,7 @@ function LeftPanel() {
       </CalcRow>
       <CalcRow>
         <OperatorButton value="log(" text="log" />
-        <OperatorButton value="√(" text="√" />
+        <OperatorButton value="sqrt(" text="√" />
       </CalcRow>
       <CalcRow>
         <OperatorButton value="ln(" text="ln" />

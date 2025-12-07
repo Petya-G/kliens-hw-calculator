@@ -32,9 +32,16 @@ function App() {
     }
 
     try {
-      setResult(String(evaluate(input)));
+      const res = evaluate(input);
+
+      if (typeof res === "function") {
+        setResult("Syntax error");
+        return;
+      }
+
+      setResult(String(res));
     } catch (error) {
-      setResult(String(error));
+      setResult("Syntax error");
     }
   }, [input]);
 
