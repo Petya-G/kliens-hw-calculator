@@ -78,8 +78,8 @@ function App() {
     <AppContext.Provider
       value={{ input, setInput, result, setResult, history, setHistory }}
     >
-      <Row>
-        <Col xs={9}>
+      <Row className="border">
+        <Col xs={9} className="border rounder">
           <Row className="mb-3 p-3 border rounded bg-light">
             <Col>
               <Row className="mb-2">

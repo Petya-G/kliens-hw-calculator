@@ -7,7 +7,7 @@ import { useContext } from "react";
 function RightPanel() {
   const { input, setInput, result, setResult } = useContext(AppContext)!;
   return (
-    <div className="p-2 border rounded">
+    <div className="p-2  rounded">
       <CalcRow>
         <FunctionButton
           value="C"

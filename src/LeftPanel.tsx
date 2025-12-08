@@ -3,9 +3,9 @@ import CalcRow from "./CalcRow";
 
 function LeftPanel() {
   return (
-    <div className="p-2 border rounded">
+    <div className="p-2">
       <CalcRow>
-        {/* <OperatorButton value="Hyp" /> */}
+        <OperatorButton value="" text="Hyp" />
         <OperatorButton value=" mod " text="mod" />
       </CalcRow>
       <CalcRow>

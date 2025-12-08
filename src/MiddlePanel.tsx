@@ -8,7 +8,7 @@ function MiddlePanel() {
   const { input, setInput, result, setResult, setHistory } =
     useContext(AppContext)!;
   return (
-    <div className="p-2 border rounded">
+    <div className="p-2 rounded">
       <CalcRow>
         <NumberButton value="%" />
         <NumberButton value="/" />
@@ -16,21 +16,34 @@ function MiddlePanel() {
         <NumberButton value="-" />
       </CalcRow>
       <CalcRow>
-        <NumberButton value="7" />
-        <NumberButton value="8" />
-        <NumberButton value="9" />
+        <Col xs={9}>
+          <CalcRow>
+            <NumberButton value="7" />
+            <NumberButton value="8" />
+            <NumberButton value="9" />
+          </CalcRow>
+          <CalcRow>
+            <NumberButton value="4" />
+            <NumberButton value="5" />
+            <NumberButton value="6" />
+          </CalcRow>
+        </Col>
         <NumberButton value="+" />
       </CalcRow>
       <CalcRow>
-        <NumberButton value="4" />
-        <NumberButton value="5" />
-        <NumberButton value="6" />
-        <NumberButton value="+" />
-      </CalcRow>
-      <CalcRow>
-        <NumberButton value="1" />
-        <NumberButton value="2" />
-        <NumberButton value="3" />
+        <Col xs={9}>
+          <CalcRow>
+            <NumberButton value="1" />
+            <NumberButton value="2" />
+            <NumberButton value="3" />
+          </CalcRow>
+          <CalcRow>
+            <Col xs={8}>
+              <NumberButton value="0" />
+            </Col>
+            <NumberButton value="." />
+          </CalcRow>
+        </Col>
         <FunctionButton
           value="="
           toolTip="Result"
@@ -38,19 +51,6 @@ function MiddlePanel() {
             if (input !== "" || result !== "" || input === result)
               setHistory((prev) => [...prev, { input: input, result: result }]);
 
-            setInput(result);
-            setResult("");
-          }}
-        />
-      </CalcRow>
-      <CalcRow>
-        <NumberButton value="0" />
-        <NumberButton value="0" />
-        <NumberButton value="." />
-        <FunctionButton
-          value="="
-          toolTip="Result"
-          onClick={() => {
             setInput(result);
             setResult("");
           }}
