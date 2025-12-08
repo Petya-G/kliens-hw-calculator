@@ -4,9 +4,17 @@ import { AppContext } from "./App";
 import { useContext } from "react";
 
 function RightPanel() {
-  const { input, setInput, setResult, setHistory } = useContext(AppContext)!;
+  const { input, setInput, setResult, setHistory, setShift } =
+    useContext(AppContext)!;
   return (
-    <div className="p-2  rounded">
+    <div className="p-2 rounded">
+      <CalcRow>
+        <FunctionButton
+          value="Shift"
+          toolTip="Second button function"
+          onClick={() => setShift(prev => !prev)}
+        />
+      </CalcRow>
       <CalcRow>
         <FunctionButton
           value="C"

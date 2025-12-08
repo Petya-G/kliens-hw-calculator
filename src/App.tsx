@@ -18,6 +18,10 @@ const AppContext = createContext<
       setResult: Dispatch<SetStateAction<string>>;
       history: { input: string; result: string }[];
       setHistory: Dispatch<SetStateAction<{ input: string; result: string }[]>>;
+      shift: boolean;
+      setShift: Dispatch<SetStateAction<boolean>>;
+      hyperbolic: boolean;
+      setHyperbolic: Dispatch<SetStateAction<boolean>>;
     }
   | undefined
 >(undefined);
@@ -31,6 +35,8 @@ function App() {
       return saved ? JSON.parse(saved) : [];
     }
   );
+  const [shift, setShift] = useState(false);
+  const [hyperbolic, setHyperbolic] = useState(false);
 
   useEffect(() => {
     if (input === "") {
@@ -83,7 +89,7 @@ function App() {
 
   return (
     <AppContext.Provider
-      value={{ input, setInput, result, setResult, history, setHistory }}
+      value={{ input, setInput, result, setResult, history, setHistory, shift, setShift, hyperbolic, setHyperbolic}}
     >
       <Row className="border">
         <Col xs={9} className="border rounder">
@@ -124,6 +130,9 @@ function App() {
         <Col xs={3}>
           <HistoryPanel />
         </Col>
+      </Row>
+      <Row>
+        <h2>{shift ? "SHIFT" : "NORM"}</h2>
       </Row>
     </AppContext.Provider>
   );
