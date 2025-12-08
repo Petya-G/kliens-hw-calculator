@@ -41,7 +41,7 @@ function LeftPanel() {
       </CalcRow>
       <CalcRow>
         <OperatorButton value={s.value} text={s.text} toolTip={s.tip} />
-        <OperatorButton value="⁻¹" text="1/x" toolTip="Reciprocal" />
+        <OperatorButton value="^(-1)" text="1/x" toolTip="Reciprocal" />
       </CalcRow>
       <CalcRow>
         <OperatorButton value={c.value} text={c.text} toolTip={c.tip} />
@@ -50,7 +50,7 @@ function LeftPanel() {
       <CalcRow>
         <OperatorButton value={t.value} text={t.text} toolTip={t.tip} />
         {!shift ? (
-          <OperatorButton value="²" text="x²" toolTip="Square" />
+          <OperatorButton value="^2" text="x²" toolTip="Square" />
         ) : (
           <OperatorButton value="^3" text="x³" toolTip="Cube" />
         )}
@@ -73,14 +73,14 @@ function LeftPanel() {
       </CalcRow>
       <CalcRow>
         {!shift ? (
-          <OperatorButton value="ln(" text="ln" toolTip="Natural logarithm" />
+          <OperatorButton value="log( , e)" text="ln" toolTip="Natural logarithm" />
         ) : (
           <OperatorButton value="e^" text="eˣ" toolTip="Exponential function" />
         )}
         {!shift ? (
           <OperatorButton value="^" text="xʸ" toolTip="x to the power of y" />
         ) : (
-          <OperatorButton value="^" text="^(-" toolTip="x to the power 1/y" />
+          <OperatorButton value="^(-" text="x¹/ʸ" toolTip="x to the power 1/y" />
         )}
       </CalcRow>
       <CalcRow>

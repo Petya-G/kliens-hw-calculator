@@ -69,11 +69,16 @@ function App() {
       else if (e.key == "Backspace")
         setInput((prev) => prev.substring(0, prev.length - 1));
       else if (e.key == "Enter") {
-        if (input !== "" || result !== "" || input === result)
+        if (
+          input !== "" ||
+          result !== "" ||
+          input === result 
+        ) {
           setHistory((prev) => [...prev, { value: input + "=" + result }]);
 
-        setInput(result);
-        setResult("");
+          setInput(result);
+          setResult("");
+        }
       }
     }
 
@@ -101,7 +106,7 @@ function App() {
       }}
     >
       <Row className="border">
-        <Col xs={6} className="border rounder">
+        <Col xs={8} className="border rounder">
           <Row className="mb-3 p-3 border rounded bg-light">
             <Col>
               <Row className="mb-2">
@@ -136,7 +141,7 @@ function App() {
             </Col>
           </Row>
         </Col>
-        <Col xs={6}>
+        <Col xs={4}>
           <HistoryPanel />
         </Col>
       </Row>

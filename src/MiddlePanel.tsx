@@ -1,5 +1,5 @@
 import Col from "react-bootstrap/Col";
-import { CalcButton, FunctionButton, NumberButton } from "./Buttons";
+import { FunctionButton, NumberButton } from "./Buttons";
 import CalcRow from "./CalcRow";
 import { AppContext } from "./App";
 import { useContext } from "react";
@@ -49,7 +49,7 @@ function MiddlePanel() {
           toolTip="Result"
           onClick={() => {
             if (input !== "" || result !== "" || input === result)
-              setHistory((prev) => [...prev, { input: input, result: result }]);
+              setHistory((prev) => [...prev, { value: input + "=" + result }]);
 
             setInput(result);
             setResult("");
