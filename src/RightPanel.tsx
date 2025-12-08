@@ -32,7 +32,7 @@ function RightPanel() {
             setInput("");
             setResult("");
             setHistory([]);
-            localStorage.setItem("history", []);
+            localStorage.setItem("history", JSON.stringify([]));
           }}
         />
         <FunctionButton value="MS" toolTip="Memory store" onClick={() => {}} />

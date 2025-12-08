@@ -6,28 +6,39 @@ import { Col, OverlayTrigger, Tooltip } from "react-bootstrap";
 function CalcButton({
   value,
   onClick,
+  toolTip,
 }: {
   value: string;
+  toolTip?: string;
   onClick: () => void;
 }) {
+  var button = (
+    <Col className="p-1 d-flex flex-fill">
+      <Button className="w-100" onClick={onClick}>
+        {value}
+      </Button>
+    </Col>
+  );
+
+  if (!toolTip) return button;
+
   return (
-    <Button className="w-100" onClick={onClick}>
-      {value}
-    </Button>
+    <OverlayTrigger placement="bottom" overlay={<Tooltip>{toolTip}</Tooltip>}>
+      {button}
+    </OverlayTrigger>
   );
 }
 
-function NumberButton({ value }: { value: string }) {
+function NumberButton({ value, toolTip }: { value: string; toolTip?: string }) {
   const { setInput } = useContext(AppContext)!;
   return (
-    <Col className="p-1 d-flex flex-fill">
-      <CalcButton
-        value={value}
-        onClick={() => {
-          setInput((input) => input + value);
-        }}
-      />
-    </Col>
+    <CalcButton
+      value={value}
+      toolTip={toolTip}
+      onClick={() => {
+        setInput((input) => input + value);
+      }}
+    />
   );
 }
 
@@ -40,13 +51,7 @@ function FunctionButton({
   toolTip: string;
   onClick: () => void;
 }) {
-  return (
-    <Col className="p-1 d-flex flex-fill">
-      <OverlayTrigger placement="bottom" overlay={<Tooltip>{toolTip}</Tooltip>}>
-        <CalcButton value={value} onClick={onClick} />
-      </OverlayTrigger>
-    </Col>
-  );
+  return <CalcButton value={value} onClick={onClick} toolTip={toolTip} />;
 }
 
 function OperatorButton({
@@ -60,16 +65,13 @@ function OperatorButton({
 }) {
   const { setInput } = useContext(AppContext)!;
   return (
-    <Col className="p-1 d-flex flex-fill">
-      <OverlayTrigger placement="bottom" overlay={<Tooltip>{toolTip}</Tooltip>}>
-        <CalcButton
-          value={text}
-          onClick={() => {
-            setInput((input) => input + value);
-          }}
-        />
-      </OverlayTrigger>
-    </Col>
+    <CalcButton
+      value={text}
+      toolTip={toolTip}
+      onClick={() => {
+        setInput((input) => input + value);
+      }}
+    />
   );
 }
 
