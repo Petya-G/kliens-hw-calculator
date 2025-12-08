@@ -7,7 +7,7 @@ function LeftPanel() {
   const { shift, hyperbolic, setHyperbolic } = useContext(AppContext)!;
   function trig(name: string) {
     if (!shift && !hyperbolic)
-      return { text: name, value: `${name}(`, tip: `${name} function` };
+      return { text: name, value: `${name}(`, tip: `${name}` };
 
     if (shift && !hyperbolic)
       return { text: `a${name}`, value: `a${name}(`, tip: `Arc ${name}` };
@@ -49,15 +49,39 @@ function LeftPanel() {
       </CalcRow>
       <CalcRow>
         <OperatorButton value={t.value} text={t.text} toolTip={t.tip} />
-        <OperatorButton value="²" text="x²" toolTip="Square" />
+        {!shift ? (
+          <OperatorButton value="²" text="x²" toolTip="Square" />
+        ) : (
+          <OperatorButton value="^3" text="x³" toolTip="Cube" />
+        )}
       </CalcRow>
       <CalcRow>
-        <OperatorButton value="log(" text="log" toolTip="Logarithm" />
-        <OperatorButton value="sqrt(" text="√" toolTip="Square root" />
+        {!shift ? (
+          <OperatorButton value="log(" text="log" toolTip="Logarithm" />
+        ) : (
+          <OperatorButton
+            value="10^"
+            text="10ˣ"
+            toolTip="Ten to the power of x"
+          />
+        )}
+        {!shift ? (
+          <OperatorButton value="sqrt(" text="√" toolTip="Square root" />
+        ) : (
+          <OperatorButton value="cbrt(" text="3√" toolTip="Cube root" />
+        )}
       </CalcRow>
       <CalcRow>
-        <OperatorButton value="ln(" text="ln" toolTip="Natural logarithm" />
-        <OperatorButton value="^" text=" xʸ" toolTip="Power" />
+        {!shift ? (
+          <OperatorButton value="ln(" text="ln" toolTip="Natural logarithm" />
+        ) : (
+          <OperatorButton value="e^" text="eˣ" toolTip="Exponential function" />
+        )}
+        {!shift ? (
+          <OperatorButton value="^" text="xʸ" toolTip="x to the power of y" />
+        ) : (
+          <OperatorButton value="^" text="^(-" toolTip="x to the power 1/y" />
+        )}
       </CalcRow>
       <CalcRow>
         <OperatorButton value="i" text="i" toolTip="Imaginary unit" />
