@@ -26,7 +26,10 @@ function App() {
   const [input, setInput] = useState("");
   const [result, setResult] = useState("");
   const [history, setHistory] = useState<{ input: string; result: string }[]>(
-    []
+    () => {
+      const saved = localStorage.getItem("history");
+      return saved ? JSON.parse(saved) : [];
+    }
   );
 
   useEffect(() => {
@@ -74,6 +77,10 @@ function App() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [result]);
 
+  useEffect(() => {
+    localStorage.setItem("history", JSON.stringify(history));
+  }, [history]);
+
   return (
     <AppContext.Provider
       value={{ input, setInput, result, setResult, history, setHistory }}
@@ -102,7 +109,7 @@ function App() {
               </Row>
             </Col>
           </Row>
-          <Row >
+          <Row>
             <Col xs={3}>
               <LeftPanel />
             </Col>

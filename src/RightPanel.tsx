@@ -1,4 +1,3 @@
-import Col from "react-bootstrap/Col";
 import { FunctionButton, OperatorButton } from "./Buttons";
 import CalcRow from "./CalcRow";
 import { AppContext } from "./App";
