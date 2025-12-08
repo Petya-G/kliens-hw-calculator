@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Col, ListGroup, ListGroupItem } from "react-bootstrap";
+import { ListGroup, ListGroupItem } from "react-bootstrap";
 import { AppContext } from "./App";
 
 function HistoryPanel() {

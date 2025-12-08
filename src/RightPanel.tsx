@@ -25,7 +25,7 @@ function RightPanel() {
           }}
         />
         <FunctionButton
-          value="<-"
+          value="←"
           toolTip="Backspace"
           onClick={() => {
             setInput(input.substring(0, input.length - 1));

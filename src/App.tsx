@@ -92,7 +92,7 @@ function App() {
       value={{ input, setInput, result, setResult, history, setHistory, shift, setShift, hyperbolic, setHyperbolic}}
     >
       <Row className="border">
-        <Col xs={9} className="border rounder">
+        <Col xs={6} className="border rounder">
           <Row className="mb-3 p-3 border rounded bg-light">
             <Col>
               <Row className="mb-2">
@@ -127,7 +127,7 @@ function App() {
             </Col>
           </Row>
         </Col>
-        <Col xs={3}>
+        <Col xs={6}>
           <HistoryPanel />
         </Col>
       </Row>
