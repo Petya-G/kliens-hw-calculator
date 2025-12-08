@@ -8,9 +8,7 @@ function HistoryPanel() {
     <div className="border p-2 rounded h-100 overflow-auto">
       <ListGroup>
         {history.map((item, i) => (
-          <ListGroupItem key={i}>
-            {item.input}={item.result}
-          </ListGroupItem>
+          <ListGroupItem key={i}>{item.value}</ListGroupItem>
         ))}
       </ListGroup>
     </div>

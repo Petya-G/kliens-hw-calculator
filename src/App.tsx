@@ -16,8 +16,8 @@ const AppContext = createContext<
       setInput: Dispatch<SetStateAction<string>>;
       result: string;
       setResult: Dispatch<SetStateAction<string>>;
-      history: { input: string; result: string }[];
-      setHistory: Dispatch<SetStateAction<{ input: string; result: string }[]>>;
+      history: { value: string }[];
+      setHistory: Dispatch<SetStateAction<{ value: string }[]>>;
       shift: boolean;
       setShift: Dispatch<SetStateAction<boolean>>;
       hyperbolic: boolean;
@@ -29,12 +29,10 @@ const AppContext = createContext<
 function App() {
   const [input, setInput] = useState("");
   const [result, setResult] = useState("");
-  const [history, setHistory] = useState<{ input: string; result: string }[]>(
-    () => {
-      const saved = localStorage.getItem("history");
-      return saved ? JSON.parse(saved) : [];
-    }
-  );
+  const [history, setHistory] = useState<{ value: string }[]>(() => {
+    const saved = localStorage.getItem("history");
+    return saved ? JSON.parse(saved) : [];
+  });
   const [shift, setShift] = useState(false);
   const [hyperbolic, setHyperbolic] = useState(false);
 
@@ -72,7 +70,7 @@ function App() {
         setInput((prev) => prev.substring(0, prev.length - 1));
       else if (e.key == "Enter") {
         if (input !== "" || result !== "" || input === result)
-          setHistory((prev) => [...prev, { input: input, result: result }]);
+          setHistory((prev) => [...prev, { value: input + "=" + result }]);
 
         setInput(result);
         setResult("");
@@ -89,7 +87,18 @@ function App() {
 
   return (
     <AppContext.Provider
-      value={{ input, setInput, result, setResult, history, setHistory, shift, setShift, hyperbolic, setHyperbolic}}
+      value={{
+        input,
+        setInput,
+        result,
+        setResult,
+        history,
+        setHistory,
+        shift,
+        setShift,
+        hyperbolic,
+        setHyperbolic,
+      }}
     >
       <Row className="border">
         <Col xs={6} className="border rounder">
