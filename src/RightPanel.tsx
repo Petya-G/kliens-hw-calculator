@@ -4,7 +4,7 @@ import { AppContext } from "./App";
 import { useContext } from "react";
 
 function RightPanel() {
-  const { input, setInput, result, setResult } = useContext(AppContext)!;
+  const { input, setInput, setResult, setHistory } = useContext(AppContext)!;
   return (
     <div className="p-2  rounded">
       <CalcRow>
@@ -31,6 +31,8 @@ function RightPanel() {
           onClick={() => {
             setInput("");
             setResult("");
+            setHistory([]);
+            localStorage.setItem("history", []);
           }}
         />
         <FunctionButton value="MS" toolTip="Memory store" onClick={() => {}} />

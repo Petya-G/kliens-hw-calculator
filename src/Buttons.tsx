@@ -5,35 +5,15 @@ import { Col, OverlayTrigger, Tooltip } from "react-bootstrap";
 
 function CalcButton({
   value,
-  toolTip,
   onClick,
 }: {
   value: string;
-  toolTip?: string;
   onClick: () => void;
 }) {
   return (
-    <OverlayTrigger placement="bottom" overlay={<Tooltip>{toolTip}</Tooltip>}>
-      <Button className="w-100" onClick={onClick}>
-        {value}
-      </Button>
-    </OverlayTrigger>
-  );
-}
-
-function FunctionButton({
-  value,
-  toolTip,
-  onClick,
-}: {
-  value: string;
-  toolTip: string;
-  onClick: () => void;
-}) {
-  return (
-    <Col className="p-1 d-flex flex-fill">
-      <CalcButton value={value} toolTip={toolTip} onClick={onClick} />
-    </Col>
+    <Button className="w-100" onClick={onClick}>
+      {value}
+    </Button>
   );
 }
 
@@ -51,6 +31,24 @@ function NumberButton({ value }: { value: string }) {
   );
 }
 
+function FunctionButton({
+  value,
+  toolTip,
+  onClick,
+}: {
+  value: string;
+  toolTip: string;
+  onClick: () => void;
+}) {
+  return (
+    <Col className="p-1 d-flex flex-fill">
+      <OverlayTrigger placement="bottom" overlay={<Tooltip>{toolTip}</Tooltip>}>
+        <CalcButton value={value} onClick={onClick} />
+      </OverlayTrigger>
+    </Col>
+  );
+}
+
 function OperatorButton({
   value,
   text,
@@ -63,13 +61,14 @@ function OperatorButton({
   const { setInput } = useContext(AppContext)!;
   return (
     <Col className="p-1 d-flex flex-fill">
-      <CalcButton
-        value={text}
-        toolTip={toolTip}
-        onClick={() => {
-          setInput((input) => input + value);
-        }}
-      />
+      <OverlayTrigger placement="bottom" overlay={<Tooltip>{toolTip}</Tooltip>}>
+        <CalcButton
+          value={text}
+          onClick={() => {
+            setInput((input) => input + value);
+          }}
+        />
+      </OverlayTrigger>
     </Col>
   );
 }
