@@ -1,10 +1,9 @@
-import Col from "react-bootstrap/Col";
 import { OperatorButton } from "./Buttons";
 import CalcRow from "./CalcRow";
 
 function LeftPanel() {
   return (
-    <Col>
+    <div className="p-2 border rounded">
       <CalcRow>
         {/* <OperatorButton value="Hyp" /> */}
         <OperatorButton value=" mod " text="mod" />
@@ -33,7 +32,7 @@ function LeftPanel() {
         <OperatorButton value="i" text="i" />
         <OperatorButton value="10^" text="x*10ʸ" />
       </CalcRow>
-    </Col>
+    </div>
   );
 }
 export default LeftPanel;

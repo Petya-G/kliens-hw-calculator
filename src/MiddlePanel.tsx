@@ -1,5 +1,5 @@
 import Col from "react-bootstrap/Col";
-import { CalcButton, NumberButton } from "./Buttons";
+import { CalcButton, FunctionButton, NumberButton } from "./Buttons";
 import CalcRow from "./CalcRow";
 import { AppContext } from "./App";
 import { useContext } from "react";
@@ -8,7 +8,7 @@ function MiddlePanel() {
   const { input, setInput, result, setResult, setHistory } =
     useContext(AppContext)!;
   return (
-    <Col>
+    <div className="p-2 border rounded">
       <CalcRow>
         <NumberButton value="%" />
         <NumberButton value="/" />
@@ -25,14 +25,15 @@ function MiddlePanel() {
         <NumberButton value="4" />
         <NumberButton value="5" />
         <NumberButton value="6" />
-        <NumberButton value="3" />
+        <NumberButton value="+" />
       </CalcRow>
       <CalcRow>
         <NumberButton value="1" />
         <NumberButton value="2" />
         <NumberButton value="3" />
-        <CalcButton
+        <FunctionButton
           value="="
+          toolTip="Result"
           onClick={() => {
             if (input !== "" || result !== "" || input === result)
               setHistory((prev) => [...prev, { input: input, result: result }]);
@@ -46,15 +47,16 @@ function MiddlePanel() {
         <NumberButton value="0" />
         <NumberButton value="0" />
         <NumberButton value="." />
-        <CalcButton
+        <FunctionButton
           value="="
+          toolTip="Result"
           onClick={() => {
             setInput(result);
             setResult("");
           }}
         />
       </CalcRow>
-    </Col>
+    </div>
   );
 }
 export default MiddlePanel;

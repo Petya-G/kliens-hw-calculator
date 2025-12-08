@@ -5,7 +5,7 @@ import { AppContext } from "./App";
 function HistoryPanel() {
   const { history } = useContext(AppContext)!;
   return (
-    <Col>
+    <div className="border p-2 rounded h-100 overflow-auto">
       <ListGroup>
         {history.map((item, i) => (
           <ListGroupItem key={i}>
@@ -13,7 +13,7 @@ function HistoryPanel() {
           </ListGroupItem>
         ))}
       </ListGroup>
-    </Col>
+    </div>
   );
 }
 

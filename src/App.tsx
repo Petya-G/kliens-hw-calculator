@@ -79,10 +79,10 @@ function App() {
       value={{ input, setInput, result, setResult, history, setHistory }}
     >
       <Row>
-        <Col>
-          <Row>
+        <Col xs={9}>
+          <Row className="mb-3 p-3 border rounded bg-light">
             <Col>
-              <Row>
+              <Row className="mb-2">
                 <Col>
                   <Form.Control
                     type="text"
@@ -91,20 +91,32 @@ function App() {
                   />
                 </Col>
               </Row>
-              <Row>
-                <Col>
-                  <h1>{result}</h1>
+              <Row className="mb-3">
+                <Col className="text-end position-relative">
+                  <span className="invisible d-block display-1">888888</span>
+
+                  <span className="position-absolute top-0 end-0 display-1">
+                    {result}
+                  </span>
                 </Col>
               </Row>
             </Col>
           </Row>
-          <Row>
-            <LeftPanel />
-            <MiddlePanel />
-            <RightPanel />
+          <Row >
+            <Col xs={3}>
+              <LeftPanel />
+            </Col>
+            <Col xs={4}>
+              <MiddlePanel />
+            </Col>
+            <Col xs={3}>
+              <RightPanel />
+            </Col>
           </Row>
         </Col>
-        <HistoryPanel />
+        <Col xs={3}>
+          <HistoryPanel />
+        </Col>
       </Row>
     </AppContext.Provider>
   );
